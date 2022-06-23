@@ -33,4 +33,4 @@ iteration $t$. Therefore, there is no need for tuning
 $\eta$. The optional projection step is not implemented. 
 In addition to the algorithm in **figure 1**, the bias term $w_0$ is updated, whenever a mistake was made:
 $$ w_0 &larr; w_0 + \eta * y_i$$
-Importantly, the bias term is not regularized.
+Importantly, the bias term $w_0$ is not regularized.
