@@ -14,8 +14,8 @@ $m$ is the number of randomly selected examples. The loss function $loss$ is cho
 | Task | Name loss function | $loss(w, w_0; X, y) = $ | Requirements |
 |:--------------|:-------------|:----------------|:-------------:|
 |Binary Classification       |Hinge loss       | max{0, 1-$y_i$ * (< $w, X_i$ > + $w_0$)}        | $y$ in {-1, 1}       |
-|Regression       | $\epsilon$-insensitive loss      | max{0, abs{$ y_i - (< w, X_i > + w_0)$}$  - \epsilon$}  | -   |\
+|Regression       | $\epsilon$-insensitive loss      | max{0, abs{$ y_i - (< w, X_i > + w_0)$}$  - \epsilon$}  | -   |
 
-\n
 
 The SVM problem are solved with stochastic sub-gadient derived in the original paper [1]. The Pegasos algorithm is given in **figure 1**.
+
