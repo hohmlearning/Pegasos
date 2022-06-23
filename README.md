@@ -16,4 +16,4 @@ $m$ is the number of randomly selected examples. The loss function $loss$ is cho
 |Binary Classification       |Hinge loss       | max{0, 1-$y_i$ * (< $w, X_i$ > + $w_0$)}        | $y$ in {-1, 1}       |
 |Regression       | $\epsilon$-insensitive loss      | max{0, |$y_i - (< w, X_i > + w_0$)| -\epsilon}        | -   |
 
-max{0, |$y_i - (< w, X_i > + w_0$)| -\epsilon} 
+max{0, | $y_i - (< w, X_i > + w_0$) | -\epsilon} 
