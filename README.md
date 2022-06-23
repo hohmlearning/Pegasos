@@ -40,6 +40,7 @@ The SVM problem are solved with stochastic sub-gadient derived in the original p
             else:
                 self.theta = (1 - self.learning_rate * self.regularization) *  self.theta 
 '''
+
 ![Primal Pegasos](https://user-images.githubusercontent.com/107933496/175406566-621d0689-f0e4-4318-9eae-fc7c2aeeb7dc.PNG)
 #### **Figure 1**: Primal Pegasos copied from original paper [1].
 
