@@ -3,5 +3,5 @@ Pegasos (**P**rimal **E**stimated sub-**G**r**A**dient **SO**lver for **S**VM) h
 
 # Fundamental formnulation
 
-The goal is to generalize the information in the training set in order to map future datapoints. In particular, a feature matrix $$X^{datapoints x features}$$ 
+The goal is to generalize the information in the training set in order to map future datapoints. In particular, a feature matrix $X^{n, d}^$ 
 $$L = \sum\limits_1^k 4x - \frac{1}{x}$$
