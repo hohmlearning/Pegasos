@@ -7,12 +7,13 @@ The goal is to generalize the information in the training set in order to map fu
 
 $$L(w, w_0; X, y) =  \frac{\lambda}{2} ||w||^2 +  \frac{1}{m} \sum\limits_{X,y} loss(w, w_0; X, y)$$
 
-$m$ is the number of randomly selected examples. The loss function $loss$ is choosen according to the problem. In June 2022, the implemented loss functions for respective tasks are shown in Table 1.
+$m$ is the number of randomly selected examples. The loss function $loss$ is choosen according to the problem. In June 2022, the implemented loss functions for respective tasks are shown in **Table 1**.
 
-#### Table 1: Implemented loss functions for respective tasks in June 2022.
+#### **Table 1**: Implemented loss functions for respective tasks in June 2022.
 
 | Task | Name loss function | $loss(w, w_0; X, y) = $ | Requirements |
 |:--------------|:-------------|:----------------|:-------------:|
 |Binary Classification       |Hinge loss       | max{0, 1-$y_i$ * (< $w, X_i$ > + $w_0$)}        | $y$ in {-1, 1}       |
 |Regression       | $\epsilon$-insensitive loss      | max{0, abs{$ y_i - (< w, X_i > + w_0)$}$  - \epsilon$}  | -   |
 
+The SVM problem are solved with stochastic sub-gadient derived in the original paper [1]. The Pegasos algorithm is given in **figure 1**.
