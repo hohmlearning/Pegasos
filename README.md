@@ -7,7 +7,7 @@ The goal is to generalize the information in the training set in order to map fu
 
 $$L(w, w_0; X, y) =  \frac{\lambda}{2} ||w||^2 +  \frac{1}{m} \sum\limits_{X,y} loss(w, w_0; X, y)$$
 
-$m$ is the number of randomly selected examples. The loss function $loss$ is choosen according to the problem. In June 2022, the implemented loss functions for respective tasks are shown in **Table 1**.
+$m$ is the number of randomly selected examples. The loss function $loss$ is choosen according to the problem. In June 2022, the implemented loss functions for respective tasks are shown in **table 1**.
 
 #### **Table 1**: Implemented loss functions for respective tasks in June 2022.
 
