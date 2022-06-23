@@ -1,5 +1,6 @@
 # Pegasos
-Pegasos (**P**rimal **E**stimated sub-**G**r**A**dient **SO**lver for **S**VM) has been introduced by Shalev-Shwartz et al. [1]. Pegasos is an optimation algorithm for Support Vector Machines (SVM) [1]. The margin of a multidimensional problem is maximized with SVM leading to an improved generalization compared to least squares.  Adapting the loss function, the SVMs are capable of solving classification and regression tasks.
+Pegasos (**P**rimal **E**stimated sub-**G**r**A**dient **SO**lver for **S**VM) has been introduced by Shalev-Shwartz et al. [1]. Pegasos is an optimation algorithm for Support Vector Machines (SVM) [1]. The margin of a multidimensional problem is maximized with SVM leading to an improved generalization compared to least squares.  Adapting the loss function, the SVMs are capable of solving classification and regression tasks.\
+In this project the Pegasos algorithm for binary classification and regression is implemented with minor changes.
 
 # Fundamental formulation of the primal problem
 
