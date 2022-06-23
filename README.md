@@ -19,3 +19,4 @@ $m$ is the number of randomly selected examples. The loss function $loss$ is cho
 
 The SVM problem are solved with stochastic sub-gadient derived in the original paper [1]. The Pegasos algorithm is given in **figure 1**.
 
+![Foto einer Pyramide](Primal Pegasos.PNG)
