@@ -17,6 +17,7 @@ $m$ is the number of randomly selected examples. The loss function $loss$ is cho
 |Regression       | $\epsilon$-insensitive loss      | max{0, abs{$ y_i - (< w, X_i > + w_0)$}$  - \epsilon$}  | -   |
 
 
-The SVM problem are solved with stochastic sub-gadient derived in the original paper [1]. The Pegasos algorithm is given in **figure 1**.
+The SVM problem are solved with stochastic sub-gadient derived in the original paper [1]. The Pegasos algorithm is given in **figure 1**.  
 
 ![Primal Pegasos](https://user-images.githubusercontent.com/107933496/175406566-621d0689-f0e4-4318-9eae-fc7c2aeeb7dc.PNG)
+### **Figure 1**: Primal Pegasos copied from original paper [1]
