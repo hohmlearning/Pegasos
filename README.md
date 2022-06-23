@@ -13,6 +13,6 @@ $m$ is the number of randomly selected examples. The loss function $loss$ is cho
 
 | Task | Name loss function | Formel | Requirements |
 |:--------------|:-------------|:----------------|:-------------:|
-|Binary Classification       |Hinge loss       | $loss(w, w_0; X, y) = max{}$        | $y in {-1, 1}$       |
+|Binary Classification       |Hinge loss       | $loss(w, w_0; X, y) = $max{$0, 1-y_i * (<w, X> + w_0)$}        | $y$ in {-1, 1}       |
 |Regression       | $\epsilon$-insensitive loss      |Zeile 2         | -   |
 
