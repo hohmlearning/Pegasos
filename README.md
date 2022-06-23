@@ -37,7 +37,8 @@ Importantly, the bias term $w_0$ is not regularized.\
 
 The randomization of the sample selecting is modified. In contrary to the original paper [1], the dataset ($X,y$) is shuffled randomly at each epoch. Therefore, in each epoch, each example is used once.\
 The code snipset for running one epoch is given:
-'''python
+
+        '''python
 
         self.batch_order = self.shuffle()
                 for count, datapoint in enumerate(self.batch_order):
@@ -64,5 +65,5 @@ The code snipset for running one epoch is given:
                         else:
                             self.theta = (1 - self.learning_rate * self.regularization) *  self.
 
-'''
+        '''
 
