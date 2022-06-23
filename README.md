@@ -5,5 +5,5 @@ Pegasos (**P**rimal **E**stimated sub-**G**r**A**dient **SO**lver for **S**VM) h
 
 The goal is to generalize the information in the training set in order to map future datapoints. In particular, weights $w^d$ and bias $w_0$ are optimized on the feature matrix $X^{n; d}$ to generalizize on the labels $y^d$, with $n$ datapoints and $d$ features [1]:
 
-$$L(w, w_0; X, y) =  - \frac{\lambda}{2} ||w||^2 +  \sum\limits_{X,y} \frac{1}{n} loss(w, w_0; X, y)$$
+$$L(w, w_0; X, y) =  \frac{\lambda}{2} ||w||^2 +  \frac{1}{n} \sum\limits_{X,y} loss(w, w_0; X, y)$$
 
