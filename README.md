@@ -25,6 +25,7 @@ The loss function $loss$ is choosen according to the problem. In June 2022, the 
 The SVM problem are solved with stochastic sub-gadient derived in the original paper [1]. The Pegasos algorithm without bias term is given in **figure 1**. 
 
 '''python
+
  self.batch_order = self.shuffle()
         for count, datapoint in enumerate(self.batch_order):
             self.t = (epoch-1) * self.batch_order.shape[0] + count+1
