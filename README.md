@@ -3,5 +3,5 @@ Pegasos (**P**rimal **E**stimated sub-**G**r**A**dient **SO**lver for **S**VM) h
 
 # Fundamental formnulation
 
-The goal is to generalize the information in the training set in order to map future datapoints. In particular, weights $w^d$ and bias $w_0$ are optimized on the feature matrix $X^{n$ x $d}$ to generalizize on the labels $y^d$, with $n$ datapoints and $d% features.
+The goal is to generalize the information in the training set in order to map future datapoints. In particular, weights $w^d$ and bias $w_0$ are optimized on the feature matrix $X^{n$ x $d$}$ to generalizize on the labels $y^d$, with $n$ datapoints and $d% features.
 $$L = \sum\limits_1^k 4x - \frac{1}{x}$$
