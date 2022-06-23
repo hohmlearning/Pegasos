@@ -12,7 +12,7 @@ $m$ is the number of randomly selected examples. The loss function $loss$ is cho
 ## Table 1: Implemented loss functions for respective tasks in June 2022.
 
 | Task | Name loss function | Formel | Spalte mittig |
-|--------------:|:-------------|----------------|:-------------:|
-|Zeile 1        |Zeile 1       |Zeile 1         |Zeile 1        |
-|Zeile 2        |Zeile 2       |Zeile 2         |Zeile 2        |
-|Zeile 3        |Zeile 3       |Zeile 3         |Zeile 3        |
+|:--------------|:-------------|:----------------|:-------------:|
+|Binary Classification       |Hinge loss       |Zeile 1         |Zeile 1        |
+|Regression       | $\epsilon$-insensitive loss      |Zeile 2         |Zeile 2        |
+
