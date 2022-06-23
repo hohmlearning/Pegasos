@@ -27,4 +27,4 @@ The SVM problem are solved with stochastic sub-gadient derived in the original p
 ![Primal Pegasos](https://user-images.githubusercontent.com/107933496/175406566-621d0689-f0e4-4318-9eae-fc7c2aeeb7dc.PNG)
 #### **Figure 1**: Primal Pegasos copied from original paper [1].
 
-The learning rate $ \e $ is decreased with increasing iteration $ t $. Therefore, there is no need for tuning $\eta$. The optional step is not implemented.
+The learning rate $ \eta $ is decreased with increasing iteration  t . Therefore, there is no need for tuning $\eta$. The optional step is not implemented.
