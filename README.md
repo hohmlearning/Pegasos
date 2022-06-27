@@ -67,3 +67,6 @@ self.batch_order = self.shuffle()
                     self.theta = (1 - self.learning_rate * self.regularization) *  self.
 
 ```
+
+## Literatur
+[1] - Shalev-Shwartz, S., Singer, Y., Srebro, N., & Cotter, A. (2011). Pegasos: Primal estimated sub-gradient solver for svm. Mathematical programming, 127(1), 3-30.
