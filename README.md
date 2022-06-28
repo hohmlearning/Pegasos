@@ -76,6 +76,14 @@ Also the mapping function is never explicity calculated, the features are implic
 
 $$L(w, w_0; X, y) =  \frac{\lambda}{2} ||w||^2 +  \frac{1}{m} \sum\limits_{X,y} loss(w, w_0; \phi(X), y)$$ 
 
+<br>
+
+However, the Pegasos algorithm is implemented with a kernel:
+$$ K(x,x') = <\phi(x),\phi(x')> $$
+<br>
+The mathematical reformulation are referred to the original paper [1].
+
+
 ## Literatur
 [1] - Shalev-Shwartz, S., Singer, Y., Srebro, N., & Cotter, A. (2011). Pegasos: Primal estimated sub-gradient solver for svm. Mathematical programming, 127(1), 3-30.
 
