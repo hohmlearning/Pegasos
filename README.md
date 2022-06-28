@@ -105,7 +105,32 @@ The Kernalized Pegasos algorithm without bias term is given in figure 2.
 #### **Figure 2**: Kernalized Pegasos copied from original paper [1].
 
 In addition to the algorithm in **figure 2**, a bias term $w_0$ is updated. The code sniplet of a single update step is shown:
-
+´´´python
+self.batch_order = self.shuffle()
+        
+        for count, datapoint in enumerate(self.batch_order):
+            self.t = (epoch-1) * self.batch_order.shape[0] + count+1
+            self.learning_rate =  1 / (self.regularization * self.t) #1 / np.sqrt(t)
+            x_datapoint = self.feature_matrix[datapoint,:]
+            label = self.labels[datapoint]
+            
+            self.y_hat = self.predict(x_datapoint)
+            self.decision = self.y_hat - label
+            
+            if self.decision > 0:
+               if  self.decision > self.epsilon:
+                   self.alpha[datapoint] += 1
+                   self.theta_0 = self.theta_0 - self.learning_rate
+               else:
+                   None
+            else:
+                self.decision = label - self.y_hat
+                if  self.decision > self.epsilon:
+                    self.alpha[datapoint] += -1
+                    self.theta_0 = self.theta_0 + self.learning_rate
+                else:
+                    None
+´´´
 
 ## Literatur
 [1] - Shalev-Shwartz, S., Singer, Y., Srebro, N., & Cotter, A. (2011). Pegasos: Primal estimated sub-gradient solver for svm. Mathematical programming, 127(1), 3-30.
