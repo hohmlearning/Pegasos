@@ -104,7 +104,7 @@ The Kernalized Pegasos algorithm without bias term is given in figure 2.
 
 #### **Figure 2**: Kernalized Pegasos copied from original paper [1].
 
-In addition to the algorithm in **figure 2**, a bias term $w_0$ is updated. The code sniplet is shown:
+In addition to the algorithm in **figure 2**, a bias term $w_0$ is updated. The code sniplet of a single update step is shown:
 
 
 ## Literatur
