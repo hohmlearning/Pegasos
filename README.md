@@ -87,7 +87,10 @@ The most comon used kernels are listed in **table 2**.
  |Name | Formulation | Details|
  |:--------------|:-------------|:----------------|
  |Polynomial|$K(x,x')=( < x,x' > + c)^{d}$|$c>=0$|
- 
+ <br>
+ $d$ is the degree and 
+ $c$ a parameter trading of the influence of higher-order terms in the polynomial. Therefore,
+ $c$ acts as an regularization parameter.
 
 
 The weight vector $w$ 
