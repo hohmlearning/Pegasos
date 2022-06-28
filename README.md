@@ -86,7 +86,7 @@ The most comon used kernels are listed in **table 2**.
 #### **Table 1**: Kernels implemented in June 2022.
  |Name | Formulation | Details|
  |:--------------|:-------------|:----------------|
- |Polynomial|$K(x,x')=(x,x'+c)^{d}$|$c>=0$|
+ |Polynomial|$K(x,x')=( < x,x' > + c)^{d}$|$c>=0$|
  
 
 
