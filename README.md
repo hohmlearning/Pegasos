@@ -68,5 +68,21 @@ self.batch_order = self.shuffle()
 
 ```
 
+## Kernalized Pegasos
+SVM is not only suited for solving linear relationships between features and labels, but also nonlinear such as polynomial or exponential. The features are 
+implicity transfered to a higher space. There is no need for transforming features manually for higher feature space. The optimation problem, e.g. Pegasos, is solved in the dual form.  
+
 ## Literatur
 [1] - Shalev-Shwartz, S., Singer, Y., Srebro, N., & Cotter, A. (2011). Pegasos: Primal estimated sub-gradient solver for svm. Mathematical programming, 127(1), 3-30.
+
+
+
+
+
+
+
+
+
+
+
+
