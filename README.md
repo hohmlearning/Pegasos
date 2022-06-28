@@ -99,7 +99,9 @@ $j$ at the timestep
 $t$. The mathematical reformulations are referred to the original paper [1]. 
 The Kernalized Pegasos algorithm without bias term is given in **figure 2**.
 <br>
+
 ![grafik](https://user-images.githubusercontent.com/107933496/176115516-804bf9e7-c8bf-43ca-b70a-bcad98781af6.png)
+
 #### **Figure 2**: Kernalized Pegasos copied from original paper [1].
 
 
