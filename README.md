@@ -34,9 +34,9 @@ iteration $t$. Therefore, there is no need for tuning
 $\eta$. The optional projection step is not implemented. 
 In addition to the algorithm in **figure 1**, the bias term $w_0$ is updated, whenever a mistake was made:
 $$ w_0 &larr; w_0 + \eta * y_i$$
-Importantly, the bias term $w_0$ is not regularized.\
+Importantly, the bias term $w_0$ is not regularized.
 
-The randomization of the sample selecting is modified. In contrary to the original paper [1], the dataset ($X,y$) is shuffled randomly at each epoch. Therefore, in each epoch, each example is used once.\
+The randomization of the sample selecting is modified. In contrary to the original paper [1], the dataset ($X,y$) is shuffled randomly at each epoch. Therefore, in each epoch, each example is used once.
 The code snipset for running one epoch is given:
 
 ```python
