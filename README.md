@@ -92,11 +92,12 @@ The most comon used kernels are listed in **table 2**.
  $c$ a parameter trading of the influence of higher-order terms in the polynomial. Therefore,
  $c$ acts as an regularization parameter.
 <br>
-
+<br>
 The weight vector $w$ 
 is calculated implicity. A vector $\alpha_t [j]$ counts the number of the performed corrections for every example 
 $j$ at the timestep
 $t$. The mathematical reformulations are referred to the original paper [1]. The Kernalized Pegasos algorithm without bias term is given in **figure 2**.
+
 ![grafik](https://user-images.githubusercontent.com/107933496/176115516-804bf9e7-c8bf-43ca-b70a-bcad98781af6.png)
 #### **Figure 2**: Kernalized Pegasos copied from original paper [1].
 
