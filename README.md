@@ -72,6 +72,10 @@ self.batch_order = self.shuffle()
 SVM is not only suited for solving linear relationships between features and labels, but also nonlinear such as polynomial or exponential. The features are 
 implicity transfered to a higher space. Only the feature inner product is needed. Therefore, there is no need for transforming features manually for higher feature space. 
 
+Also the mapping function is never explicity calculated, the features are implicity transformed with a mapping function $\phi(X)$:
+
+$$L(w, w_0; X, y) =  \frac{\lambda}{2} ||w||^2 +  \frac{1}{m} \sum\limits_{X,y} loss(w, w_0; \phi(X), y)$$ 
+
 ## Literatur
 [1] - Shalev-Shwartz, S., Singer, Y., Srebro, N., & Cotter, A. (2011). Pegasos: Primal estimated sub-gradient solver for svm. Mathematical programming, 127(1), 3-30.
 
