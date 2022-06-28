@@ -83,7 +83,8 @@ $$ K(x,x') = <\phi(x),\phi(x')> $$
 <br>
 The weight vector $w$ 
 is calculated implicity. A vector $\alpha_t [j]$ counts the number of the performed corrections for every example 
-$j$. The mathematical reformulation are referred to the original paper [1].
+$j$ at the timestep
+$t$. The mathematical reformulations are referred to the original paper [1].
 
 
 ## Literatur
