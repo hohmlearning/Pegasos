@@ -81,7 +81,7 @@ $$L(w, w_0; X, y) =  \frac{\lambda}{2} ||w||^2 +  \frac{1}{m} \sum\limits_{X,y} 
 However, the Pegasos algorithm is implemented with a kernel:
 $$ K(x,x') = <\phi(x),\phi(x')> $$
 <br>
-The weight vector $w$ is calculated implicity. A vector $\alpha_t [j]$ counts the number of the performed corrections for every example $j$. The mathematical reformulation are referred to the original paper [1].
+The weight vector $w$ is calculated implicity. A vector $\alpha$ $_t [j]$ counts the number of the performed corrections for every example $j$. The mathematical reformulation are referred to the original paper [1].
 
 
 ## Literatur
