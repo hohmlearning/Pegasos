@@ -69,28 +69,27 @@ self.batch_order = self.shuffle()
 ```
 
 ## Kernalized Pegasos
-SVM is not only suited for solving linear relationships between features and labels, but also nonlinear such as polynomial or radial basis function kernel. The features are 
-implicity transfered to a higher space. Only the feature inner product is needed. Therefore, there is no need for transforming features manually for higher feature space. 
+SVM is not only suited for solving linear relationships between features and labels but also nonlinear such as polynomial or radial basis function kernel. The features are 
+implicity transferred to a higher space. Only the feature inner product is needed. Therefore, there is no need for transforming features manually for higher feature space. 
 
-Also the mapping function is never explicity calculated, the features are implicity transformed with a mapping function $\phi(X)$:
+Also, the mapping function is never explicitly calculated, the features are implicity transformed with a mapping function $\phi(X)$:
 
 $$L(w, w_0; X, y) =  \frac{\lambda}{2} ||w||^2 +  \frac{1}{m} \sum\limits_{X,y} loss(w, w_0; \phi(X), y)$$ 
 
 <br>
-The kernel implemented are listed in 
 However, the Pegasos algorithm is implemented with a kernel:
 $$ K(x,x') = <\phi(x),\phi(x')> $$
 <br>
-The most comon used kernels are listed in **table 2**.
+The kernels implemented are listed in **table 2**.
 
-#### **Table 1**: Kernels implemented in June 2022.
+#### **Table 2**: Kernels implemented in June 2022.
  |Name | Formulation | Details|
  |:--------------|:-------------|:----------------|
  |Polynomial|$K(x,x')=( < x,x' > + c)^{d}$|$c>=0$|
  <br>
  $d$ is the degree and 
  $c$ a parameter trading of the influence of higher-order terms in the polynomial. Therefore,
- $c$ acts as an regularization parameter.
+ $c$ acts as a regularization parameter.
 <br>
 <br>
 The weight vector $w$ 
@@ -104,7 +103,7 @@ The Kernalized Pegasos algorithm without bias term is given in figure 2.
 
 #### **Figure 2**: Kernalized Pegasos copied from original paper [1].
 
-In addition to the algorithm in **figure 2**, a bias term $w_0$ is updated. The code sniplet of a single update step is shown:
+In addition to the algorithm in **figure 2**, a bias term $w_0$ is updated. The code snppet of a single update step is shown:
 
 ```python
 self.batch_order = self.shuffle()
