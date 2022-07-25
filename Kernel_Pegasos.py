@@ -2,7 +2,7 @@
 """
 Created on Mon Jun 13 22:55:14 2022
 
-@author: Manue
+@author: Hohm
 """
 import numpy as np
 import sys
