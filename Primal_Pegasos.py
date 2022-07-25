@@ -15,7 +15,7 @@ from tqdm import tqdm
 from Evaluation_Metric import Metric_regression, Metric_classification
 
 class Pegasos_classification(Metric_classification):
-    def __init__(self, regularization, epoch_max):
+    def __init__(self, regularization, epoch_max, verbose=True):
         '''
         Pegasos: Primal Estimated sub-GrAdient SOlver for (Support Vector Machines) SVM [1]
         
@@ -44,6 +44,7 @@ class Pegasos_classification(Metric_classification):
         self.learning_rate = np.ones(1, dtype=np.float64) 
         self.learning_rate  = self.learning_rate / (regularization * 1)
         self.epoch_max = int(epoch_max)
+        self.verbose = verbose
         self.theta_0 = np.zeros(1, dtype=np.float64)
         self.t = np.ones(1, dtype=np.int64) 
         
@@ -51,6 +52,9 @@ class Pegasos_classification(Metric_classification):
         self.labels = None
         self.theta = None
         self.batch_order = None
+        
+        if verbose == False:
+            self.fit = self.fit_silence
         
     def decision_boundary(self, feature_matrix):
         '''
@@ -126,6 +130,31 @@ class Pegasos_classification(Metric_classification):
             self.single_epoch(epoch)
         print('#'*10)
         
+    def fit_silence (self, feature_matrix, labels):
+        '''
+        Initializes the weights (theta) and batch order according to the
+        feature_matrix and the labels. Then, runs the Pegasos for each epoch
+        till the maximum epoch.
+
+        Parameters
+        ----------
+        feature_matrix :  Numpy array: (datapoints x features)
+        labels : Numpy array: (datapoints x 1)
+
+        Returns
+        -------
+        None.
+
+        '''
+        self.theta = np.zeros(feature_matrix.shape[1]) 
+        self.feature_matrix = feature_matrix
+        self.labels = labels
+        self.batch_order = np.arange(feature_matrix.shape[0], dtype=int)
+       
+        for epoch in range(1, self.epoch_max+1):
+             self.single_epoch(epoch)
+            
+        
     def single_epoch (self, epoch):
         '''
         Runs Pegasos for one epoch. First the dataset is shuffled. For each
@@ -166,7 +195,7 @@ class Pegasos_classification(Metric_classification):
         return (accuracy__)
                 
 class Pegasos_regression(Pegasos_classification, Metric_regression):
-    def __init__(self, regularization, epoch_max, epsilon=1E-3):
+    def __init__(self, regularization, epoch_max, epsilon=1E-3, verbose=True):
         '''
         L(l, w; (x,y)) = l/2 ||theta||² + 1/m sum(max{0, |y_m - y_m_hat| - epsilon})
         with: y_hat = <theta, x> + theta_0
@@ -184,7 +213,7 @@ class Pegasos_regression(Pegasos_classification, Metric_regression):
         None.
 
         '''
-        super().__init__(regularization, epoch_max)
+        super().__init__(regularization, epoch_max, verbose)
         self.epsilon = np.ones(1, dtype=np.float64) * epsilon
         self.y_hat = np.ones(1, dtype=np.float64)
         self.label = np.ones(1, dtype=np.float64)
