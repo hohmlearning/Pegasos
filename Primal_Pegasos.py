@@ -2,7 +2,7 @@
 """
 Created on Mon Jun 13 21:55:10 2022
 
-@author: Manue
+@author: Hohm
 """
 import sys
 path = r'E:\Eigene Dateien\2022\Project_Git_hub'
@@ -272,30 +272,3 @@ class Pegasos_regression(Pegasos_classification, Metric_regression):
                 else:
                     self.theta = (1 - self.learning_rate * self.regularization) *  self.theta
                 
-if __name__ == '__main__':
-    import pandas as pd
-    titanic_dataset = pd.read_csv('titanic/train.csv')
-    titanic_dataset = titanic_dataset.dropna()
-    
-    y = np.array(titanic_dataset['Survived'])
-    y_zero = y == 0
-    y[y_zero] = -1
-         
-    X = np.array(titanic_dataset[['Pclass', 'Age', 'SibSp', 'Parch', 'Fare']])
-    X = X - X.mean(axis=0)
-    X = X / X.var(axis=0)**0.5
-    
-    Pegasos_classification = Pegasos_classification(regularization=0.01, epoch_max=100)
-    Pegasos_classification.fit(X, y)
-    print(Pegasos_classification.accuracy(X, y))
-     
-    '''       
-    Kernel = Kernel_polynomial(c=0, p=3)
-    for l in [1E-5]:
-        SVM = Pegasos_kernel(Kernel, l, 1E4)
-        SVM.fit(X, y)
-        
-        accuracy_train = SVM.accurracy(X, y)
-        
-        print('Pegasos accuracy:',accuracy_train)
-    '''
