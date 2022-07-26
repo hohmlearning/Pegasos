@@ -8,10 +8,10 @@ Created on Mon Jul 25 10:35:13 2022
 import pandas as pd
 import seaborn as sns
 import numpy as np
-import pandas as pd
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 from Evaluation_Metric import Metric_regression
-from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.linear_model import LinearRegression
 from Primal_Pegasos import Pegasos_regression
 Pegasos_kernel = __import__('Kernel_Pegasos').Pegasos_kernel_regression
 Kernel = __import__('Kernel_Pegasos').Kernel_polynomial   
@@ -61,7 +61,7 @@ X = X / X.var(axis=0)**0.5
 #%%
 np.random.seed(42)
 n = X.shape[0]
-split_fraction = 0.9
+split_fraction = 0.8
 n_random = np.random.permutation(n)
 n_train = n_random[:int(n*split_fraction)]
 n_test = n_random[int(n*split_fraction):]
@@ -94,13 +94,13 @@ def MSE_l (l, epoch_max, epsilon, X_train, y_train, X_val, y_val):
 #%%
 l_opt_list = []
 epoch_max_diagram = 100
-n_bags = 5
+n_bags = 20
 np.random.seed(42)
 bags_list = preparation_cross_validation(X_train, y_train, n_bags)
 #%%
 legend_list = ['$n\mathrm{_{bag}}$ = ' + str(i+1) for i in range(n_bags)]
-l_array = np.linspace(0.00001, 25, 10)
-for n_val in range (n_bags):
+l_array = np.linspace(0.00001, 25, 100)
+for n_val in tqdm(range (n_bags)):
     X_train_ = []
     y_train_ = []
     X_val_ = np.array(bags_list[n_val].x)
@@ -115,11 +115,12 @@ for n_val in range (n_bags):
     MSE_min = lambda l: MSE_l(l, epoch_max=epoch_max_diagram, epsilon=1E-8, X_train=X_train_, y_train=y_train_, X_val=X_val_, y_val=y_val_)
     MSE_min_vec = np.vectorize(MSE_min)
     plt.plot(l_array, MSE_min_vec(l_array))
+
 plt.title('Epoch$\mathrm{_{max}}$ = ' + '{:.0f}'.format(epoch_max_diagram))
 plt.xlabel('$\lambda$ / -')
-plt.ylabel('MEDV')
-plt.legend(legend_list)
-plt.plot()
+plt.ylabel('MEDV$\mathrm{_{val}}$')
+plt.legend(legend_list, loc='upper right', fontsize='xx-small')
+plt.show()
 #%%
 epoch_max = 100
 MSE_mean = 0
@@ -145,8 +146,8 @@ best_l_array = np.array(l_opt_list)
 print('Mean MSE Cross Validation = {:.2f}'.format(MSE_mean))
 print('Best lambda = {:.3g} +- {:.3g}'.format(best_l_array.mean(), best_l_array.var(ddof=1)**0.5))
 
-l_best = best_l_array.mean()
-Pegasos_linear_CV = Pegasos_regression(regularization=l_best,
+l_best_linear = best_l_array.mean()
+Pegasos_linear_CV = Pegasos_regression(regularization=l_best_linear,
                              epoch_max=epoch_max,
                              epsilon=1E-8)
 Pegasos_linear_CV.fit(X_train, y_train)
@@ -342,11 +343,52 @@ ARD_compare['Pegasos (Kernel - linear)'] = -(MSE_compare['Pegasos (Kernel - line
 ARD_compare['Pegasos (Kernel - quadratic)'] = -(MSE_compare['Pegasos (Kernel - quadratic)'] - MSE_compare['Sklearn'])  / MSE_compare['Sklearn']*100
 ARD_compare['Pegasos (Kernel - kubic)'] = -(MSE_compare['Pegasos (Kernel - kubic)'] - MSE_compare['Sklearn'])  / MSE_compare['Sklearn']*100
 
-
 MSE_DF = MSE_compare.to_frame(name='MSE')
 ARD_DF = ARD_compare.to_frame(name='Deviation / %')
 performance_DF = pd.concat([ARD_DF, MSE_DF], axis=1)
 print(performance_DF)
+#%%
+MSE_train = []
+MSE_val = []
+train_samples = []
+Pegasos_linear_CV = Pegasos_regression(regularization=l_best_linear,
+                             epoch_max=epoch_max,
+                             epsilon=1E-8,
+                             verbose=False)
+
+n = X_train.shape[0]
+split_fraction = 0.8
+n_split = int(n * split_fraction)
+X_val_ = X_train[n_split:,:]
+y_val_ = y_train[n_split:]
+
+lin_reg_sub = LinearRegression()
+lin_reg_sub.fit(X_train[:n_split,:], y_train[:n_split])
+y_val = np.dot(X_val_, lin_reg.coef_) + lin_reg.intercept_
+MSE_epsilon = Metric_regression().fun_MSE(y_val, y_val_)
+
+n_start = 1
+for n_sample in tqdm(range(n_start, n_split)):
+    train_samples.append(n_sample)
+    X_train_sub = X_train[:n_sample,:]
+    y_train_sub = y_train[:n_sample]
+    
+    Pegasos_linear_CV.fit(X_train_sub, y_train_sub)
+    MSE_train.append(Pegasos_linear_CV.MSE(X_train_sub, y_train_sub))
+    MSE_val.append(Pegasos_linear_CV.MSE(X_val_, y_val_))
+   
+plt.plot(train_samples, [MSE_epsilon for n in range(n_start, n_split)])
+plt.plot(train_samples, MSE_train)
+plt.plot(train_samples, MSE_val)
+plt.xlim(0, n_split)
+plt.xlabel('$n_\mathrm{{train}}$ / -')
+plt.ylabel('MSE')
+plt.legend(['$\epsilon$','Training', 'Testing'])
+plt.yscale('log')
+plt.show()
+    
+    
+    
 
 
 
