@@ -51,7 +51,7 @@ class Kernel_polynomial ():
         return (K)
     
 class Pegasos_kernel_classification (Metric_classification):
-    def __init__ (self, kernel, regularization, epoch_max):
+    def __init__ (self, kernel, regularization, epoch_max, verbose=True):
         '''
         Pegasos: Primal Estimated sub-GrAdient SOlver for (Support Vector Machines) SVM [1]
         
@@ -81,6 +81,9 @@ class Pegasos_kernel_classification (Metric_classification):
         self.learning_rate = np.ones(1, dtype=np.float64)
         self.learning_rate = self.learning_rate / (regularization * 1)
         self.t =  np.ones(1, dtype=np.int64)
+        if verbose == False:
+            self.fit = self.fit_silence
+        
         self.epoch_max = int(epoch_max)
         self.feature_matrix = None
         self.labels = None
@@ -192,9 +195,33 @@ class Pegasos_kernel_classification (Metric_classification):
         for epoch in tqdm(range(1, self.epoch_max+1)):
             self.single_epoch(epoch)
         print('#'*10)
+        
+    def fit_silence (self, feature_matrix, labels):
+        '''
+        Initializes the alphas (theta) and batch order according to the
+        feature_matrix and the labels. Then, runs the Pegasos for each epoch
+        till the maximum epoch.
+
+        Parameters
+        ----------
+        feature_matrix :  Numpy array: (datapoints x features)
+        labels : Numpy array: (datapoints x 1)
+
+        Returns
+        -------
+        None.
+
+        '''
+        self.feature_matrix = feature_matrix
+        self.labels = labels
+        self.batch_order = np.arange(feature_matrix.shape[0], dtype=int)
+        self.alpha = np.zeros(feature_matrix.shape[0], dtype=int)
+        
+        for epoch in range(1, self.epoch_max+1):
+            self.single_epoch(epoch)
     
 class Pegasos_kernel_regression (Pegasos_kernel_classification, Metric_regression):
-    def __init__ (self, kernel, regularization, epoch_max, epsilon):
+    def __init__ (self, kernel, regularization, epoch_max, epsilon, verbose=True):
         '''
         Pegasos: Primal Estimated sub-GrAdient SOlver for (Support Vector Machines) SVM [1]
         
@@ -226,7 +253,7 @@ class Pegasos_kernel_regression (Pegasos_kernel_classification, Metric_regressio
         [1] - Shalev-Shwartz, S., Singer, Y., Srebro, N., & Cotter, A. (2011). Pegasos: Primal estimated sub-gradient solver for svm. Mathematical programming, 127(1), 3-30.
 
         '''
-        super().__init__(kernel, regularization, epoch_max)
+        super().__init__(kernel, regularization, epoch_max, verbose)
         self.epsilon = np.ones(1, dtype=np.float64) 
         self.epsilon = self.epsilon * epsilon
         self.y_hat = np.ones(1, dtype=np.float64)
