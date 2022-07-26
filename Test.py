@@ -94,7 +94,7 @@ def MSE_l (l, epoch_max, epsilon, X_train, y_train, X_val, y_val):
 #%%
 l_opt_list = []
 epoch_max_diagram = 100
-n_bags = 20
+n_bags = 10
 np.random.seed(42)
 bags_list = preparation_cross_validation(X_train, y_train, n_bags)
 #%%
