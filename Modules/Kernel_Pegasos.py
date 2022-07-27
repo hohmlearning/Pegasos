@@ -9,9 +9,8 @@ import sys
 path = r'E:\Eigene Dateien\2022\Project_Git_hub'
 if path not in sys.path:
     sys.path.append(path) 
-    
-import numpy as np
 from tqdm import tqdm
+import pdb
     
 from Evaluation_Metric import Metric_regression, Metric_classification
 
@@ -50,6 +49,51 @@ class Kernel_polynomial ():
         K = K**self.p
         return (K)
     
+class RBF ():
+    def __init__ (self, gamma=1):
+        '''
+        Radial Basis Function (RBF)        
+
+        Parameters
+        ----------
+        gamma : float - influence of a single training example proportional 1/gamma 
+                        the smaller gamma, the more regularisation
+                        
+
+        Returns
+        -------
+        None.
+
+        '''
+        self.gamma = gamma 
+        self.name = 'Radial basis function (gamma={})'.format(self.gamma)
+        
+    def __call__(self, X, Y):
+        '''
+        K(X, Y) = epx(-gamma ||X-Y||²)
+
+        Parameters
+        ----------
+        X : numpy array (n datapoints x features)
+        Y : numpy array (m datapoints x features)
+
+        Returns
+        -------
+        K : Kernel_matrix (n datapoints x m datapoints)
+
+        '''
+
+        if X.ndim == 1:
+            X = np.array([X])
+        if Y.ndim == 1:
+            Y = np.array([Y])
+                
+        K = -2 * np.dot(X, Y.T)
+        K += np.sum(X**2, axis=1).reshape(X.shape[0], 1)
+        K += np.sum(Y**2, axis=1).reshape(1, Y.shape[0])
+        K = np.exp(-self.gamma * K)
+        return (K)     
+
 class Pegasos_kernel_classification (Metric_classification):
     def __init__ (self, kernel, regularization, epoch_max, verbose=True):
         '''
