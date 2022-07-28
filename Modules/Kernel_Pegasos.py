@@ -87,7 +87,6 @@ class RBF ():
             X = np.array([X])
         if Y.ndim == 1:
             Y = np.array([Y])
-                
         K = -2 * np.dot(X, Y.T)
         K += np.sum(X**2, axis=1).reshape(X.shape[0], 1)
         K += np.sum(Y**2, axis=1).reshape(1, Y.shape[0])
