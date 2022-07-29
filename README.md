@@ -84,10 +84,11 @@ $$ K(x,x') = <\phi(x),\phi(x')> $$
 <br>
 The kernels implemented are listed in **table 2**.
 
-#### **Table 2**: Kernels implemented in June 2022.
+#### **Table 2**: Kernels implemented in July 2022.
  |Name | Formulation | Details|
  |:--------------|:-------------|:----------------|
  |Polynomial|$K(x,x')=( < x,x' > + c)^{d}$|$c>=0$|
+  |Radial basis function |$K(x,x')=exp(\gamma \cdot d^2(x-x'))$ |$\gamma >=0;$ $d^2(,)$ - Euclidian distance|
  <br>
  $d$ is the degree and 
  $c$ a parameter trading of the influence of higher-order terms in the polynomial. Therefore,
